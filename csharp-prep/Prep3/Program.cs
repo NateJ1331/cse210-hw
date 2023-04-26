@@ -15,6 +15,7 @@ class Program
         {   
             Console.WriteLine("Whats the Magic number? ");
             string SGuess = guess.ToString();
+    
             SGuess = Console.ReadLine();
             guess = Int32.Parse(SGuess);
             
