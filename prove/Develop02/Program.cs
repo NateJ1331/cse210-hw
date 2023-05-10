@@ -24,8 +24,20 @@ namespace Develop02{
     {
         static void Main(string[] args)
         {
+            DateTime theCurrentTime = DateTime.Now;
+            string dateText = theCurrentTime.ToShortDateString();
+
             Entry myEntry = new Entry();
-            myEntry.Store("What is your name?","Nate Jensen","8 May 2023");
+            Prompt prompts = new Prompt();
+            User user = new User();
+
+            string prompt = prompts.GetPrompt();
+            string response;
+
+            response = user.getResponse(prompt);
+            Console.WriteLine("\n");
+
+            myEntry.Store(prompt ,response, dateText);
 
             Journal journal = new Journal();
             journal.StoreEntry(myEntry);

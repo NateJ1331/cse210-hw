@@ -11,7 +11,7 @@ namespace Develop02
         string date;
         public string GetAsString()
         {
-            return $"{date}\n{prompt}\n{response}\n";
+            return $"{prompt}\n{response}\n{date}\n";
         }
         public void Store (string prompt, string response, string date)
         { 
