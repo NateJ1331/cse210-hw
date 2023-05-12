@@ -18,10 +18,8 @@ class Journal
 
       public void StoreEntry (Entry entry)
       {
-        if(!entries.Contains(entry))
-        {
-           entries.Add(entry); 
-        }
+        entries.Add(entry); 
+        
       }
 
     }

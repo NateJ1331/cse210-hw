@@ -4,9 +4,9 @@ namespace Develop02
 {
     class User
     {
-        public string getResponse(string prompt)
+        public string GetResponse(string prompt)
         {
-            Console.WriteLine(prompt);
+            Console.WriteLine(prompt,"\n >");
             string response = Console.ReadLine();
             return response;
         }
