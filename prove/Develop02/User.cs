@@ -6,7 +6,7 @@ namespace Develop02
     {
         public string GetResponse(string prompt)
         {
-            Console.WriteLine(prompt,"\n >");
+            Console.WriteLine(prompt);
             string response = Console.ReadLine();
             return response;
         }

@@ -22,11 +22,14 @@ namespace Develop02
             User user = new User();
             Entry myEntry = new Entry();
             Journal journal = new Journal();
+            File file = new File();
 
             string prompt;
             string response;
+            string fileName;
             int choice = 0;
-            List<String> message = new List<String>();
+            List<String> messages = new List<String>();
+            List<String> formatMessages = new List<String>();
             List<Entry> entries = new List<Entry>();
             
             DateTime theCurrentTime = DateTime.Now;
@@ -45,22 +48,43 @@ namespace Develop02
                 switch(choice)
                 {
                     case 1:
+
                         prompt = prompts.GetPrompt();
                         response = user.GetResponse(prompt);
                         myEntry.Store(prompt ,response, dateText);
                         journal.StoreEntry(myEntry);
                         entries = journal.GetAllEntries();
-                        message.Add(myEntry.GetAsString());
-
+                        messages.Add(myEntry.GetAsString());
+                        formatMessages.Add(myEntry.FormatString());
+                       
                     break;
 
                     case 2:
                         
-                        for(int i = 0; i < entries.Count; i++)
+                        foreach(string message in messages)
                         {
-                            Console.WriteLine(message[i]);
+                            
+                            Console.WriteLine(message);
                         }
+
                     break;
+
+                    case 3:
+                        
+                        Console.WriteLine("What is the filename? ");
+                        fileName = Console.ReadLine();
+                        file.Save(fileName,formatMessages);
+
+                    break;
+
+                    case 4:
+
+                        Console.WriteLine("What is the filename? ");
+                        fileName = Console.ReadLine();
+                        file.Load(fileName, messages);
+
+                    break;
+                    
                 }
             }
                 

@@ -13,6 +13,10 @@ namespace Develop02
         {
             return $"{prompt}\n{response}\n{date}\n";
         }
+        public string FormatString()
+        {
+            return $"{prompt}:{response}:{date}:";
+        }
         public void Store (string prompt, string response, string date)
         { 
             this.prompt = prompt;
