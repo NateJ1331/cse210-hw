@@ -1,9 +1,11 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+
 namespace Develop03 
 {
     class UserInterface
     {
-        Scripture scripture = new Scripture();
-        Word words = new Word();
         public string EnterReference()
         {
             string reference = "Heleman 5:12";
@@ -21,12 +23,15 @@ namespace Develop03
 
         public void Display()
         {
-            Console.WriteLine($"{this.EnterReference()}:");
-            string[] Words = scripture.GetWords();
+            Scripture scripture = new Scripture();       
+            Word words = new Word();
 
-            foreach (string word in Words)
+            Console.WriteLine($"{this.EnterReference()}:");
+            string[] splitWords = scripture.GetWords();
+
+            foreach (string eachWord in splitWords)
             {
-                Console.Write($"{words.GetWord(word)} ");
+                Console.Write($"{words.GetWord(eachWord)} ");
             }
         }
         
