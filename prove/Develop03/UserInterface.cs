@@ -2,6 +2,8 @@ namespace Develop03
 {
     class UserInterface
     {
+        Scripture scripture = new Scripture();
+        Word words = new Word();
         public string EnterReference()
         {
             string reference = "Heleman 5:12";
@@ -19,7 +21,13 @@ namespace Develop03
 
         public void Display()
         {
-            Console.WriteLine($"{this.EnterReference()}:\n {this.EnterScripture()}");
+            Console.WriteLine($"{this.EnterReference()}:");
+            string[] Words = scripture.GetWords();
+
+            foreach (string word in Words)
+            {
+                Console.Write($"{words.GetWord(word)} ");
+            }
         }
         
     } 
