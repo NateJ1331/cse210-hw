@@ -1,23 +1,19 @@
 namespace Develop03
     {
         class Word 
-        {
-            private bool _isHidden = true;
-            private string _word; 
-            private string _underscores;
+        {   
+            public string hide(string word)
+            {
+                string underscores = "";
 
-            public string GetWord(string word)
-            {     
-                if(_isHidden == true)
+                for(int i = 0; i < word.Length; i++)
                 {
-                    return word;
+                    underscores = underscores + "_" ;
                 }
                 
-                else
-                {
-                    return _underscores;
-                }
+                underscores = underscores + " ";
+                return underscores;
             }
-        }
+        
 
     }

@@ -19,10 +19,7 @@ namespace Develop03
 
         }
 
-        public void HideRandomWord()
-        {
-
-        }
+    
 
 
     }
