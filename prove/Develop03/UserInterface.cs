@@ -8,6 +8,7 @@ namespace Develop03
     {
         private string _quit = "";
         private int _counter = 0;
+        private string[] _splitWords;
         public string EnterReference()
         {
             string reference = "Heleman 5:12";
@@ -41,9 +42,7 @@ namespace Develop03
             Scripture scripture = new Scripture();       
             Word word = new Word();
             
-            string[] splitWords = scripture.GetWords();
-            
-                
+            _splitWords = scripture.GetWords();
 
             Random rnd = new Random();
             
@@ -51,40 +50,40 @@ namespace Develop03
             while(_quit != "quit")
             {
                 _counter = 0;
-                int num1 = rnd.Next(splitWords.Length);
-                int num2 = rnd.Next(splitWords.Length);
+                int num1 = rnd.Next(_splitWords.Length);
+                int num2 = rnd.Next(_splitWords.Length);
 
     
-                for(int i = 0; i < splitWords.Length; i++)
+                for(int i = 0; i < _splitWords.Length; i++)
                 {
                     if (i != num1 && i !=num2)
                     {
-                        Console.Write($"{splitWords[i]} ");
+                        Console.Write($"{_splitWords[i]} ");
                     }
 
                     else if (i == num1 || i == num2)
                     {
-                        if(splitWords[i].Substring(0,1) == "_")
+                        if(_splitWords[i].Substring(0,1) == "_")
                         { 
-                            Console.Write($"{splitWords[i]} ");
+                            Console.Write($"{_splitWords[i]} ");
                         }
 
                         else
                         {
-                            splitWords[i] = word.hide(splitWords[i]);
+                            _splitWords[i] = word.hide(_splitWords[i]);
                         }
                     }
                 }
 
                 
-                _counter = this.Counter(splitWords,_counter);
+                _counter = this.Counter(_splitWords,_counter);
 
 
                 //Testing Console.WriteLine($"\n\n{_counter}\n\n");
                 //Testing Console.WriteLine($"{splitWords.Length}");
                 Console.WriteLine("\n\nHit enter to continue or type quit to end");
                 _quit = Console.ReadLine();
-                if(_counter == splitWords.Length){break;}
+                if(_counter == _splitWords.Length){break;}
                 Console.Clear();
             }
         }

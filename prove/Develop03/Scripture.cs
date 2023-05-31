@@ -16,11 +16,7 @@ namespace Develop03
             _words  = scripture.Split(splitter);
 
             return _words;
-
         }
-
-    
-
 
     }
 }
