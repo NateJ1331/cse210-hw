@@ -9,6 +9,7 @@ namespace Develop03
         private string _quit = "";
         private int _counter = 0;
         private string[] _splitWords;
+
         public string EnterReference()
         {
             string reference = "Heleman 5:12";
@@ -41,19 +42,44 @@ namespace Develop03
         {
             Scripture scripture = new Scripture();       
             Word word = new Word();
-            
-            _splitWords = scripture.GetWords();
-
             Random rnd = new Random();
-            
 
+            _splitWords = scripture.GetWords();
+            List<int> nums = new List<int>();
+            
             while(_quit != "quit")
             {
                 _counter = 0;
                 int num1 = rnd.Next(_splitWords.Length);
                 int num2 = rnd.Next(_splitWords.Length);
 
-    
+                if(num1 == num2)
+                {
+                    while(num1 == num2)
+                    {
+                        num2 = rnd.Next(_splitWords.Length);
+                    }
+                }
+
+                if(nums.Count > 0)
+                {
+                    for(int i = 0; i < nums.Count(); i++)
+                    {
+                        while(num1 == nums[i])
+                        {
+                            num1 = rnd.Next(_splitWords.Length);
+                        }
+
+                        while(num2 == nums[i])
+                        {
+                            num2 = rnd.Next(_splitWords.Length);
+                        }
+                    }
+                }
+
+                nums.Add(num1);
+                nums.Add(num2);
+
                 for(int i = 0; i < _splitWords.Length; i++)
                 {
                     if (i != num1 && i !=num2)
@@ -68,7 +94,7 @@ namespace Develop03
                             Console.Write($"{_splitWords[i]} ");
                         }
 
-                        else
+                        else if(_splitWords[i].Substring(0,1) != "_")
                         {
                             _splitWords[i] = word.hide(_splitWords[i]);
                         }
