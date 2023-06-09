@@ -1,9 +1,19 @@
 using System;
-
-class Program
+namespace Learning04
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Learning04 World!");
+        static void Main(string[] args)
+        {
+            MathAssignment assignment1 = new MathAssignment("Nate","Calculus","7.5","14-35");
+
+            Console.WriteLine(assignment1.GetSummanry());
+            Console.WriteLine(assignment1.GetHomeworkList());
+
+            MathAssignment assignment2 = new MathAssignment("Nate","Communism","Communist Manifesto","Carl Marx");
+            Console.WriteLine($"\n{assignment2.GetSummanry()}");
+            Console.WriteLine(assignment2.GetHomeworkList());
+
+        }
     }
 }
