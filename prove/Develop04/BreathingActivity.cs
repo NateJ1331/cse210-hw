@@ -32,9 +32,8 @@ namespace Develop04
 
         public void Breathing(float duration)
         {
-            Console.WriteLine("Welcome to the Breathing Activity");
-            Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
-            this.Start();
+           
+            this.ActivityStart();
 
             for (float i = duration/5; i > 0; i--)
             {

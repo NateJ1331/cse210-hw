@@ -1,7 +1,6 @@
+using System;
 namespace Develop04
 {
-    using System;
-
     class Program
     {
         static void Main(string[] args)

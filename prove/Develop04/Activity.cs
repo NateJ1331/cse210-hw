@@ -5,8 +5,29 @@ namespace Develop04
         private float _duration;
         private string _endMessage;
 
-       
-        public void Start()
+        public void StartMessage(string activity)
+        {
+            Console.Clear();
+
+            Console.WriteLine($"Welcome to the {activity} Activity\n");
+            
+            switch(activity)
+            {
+                case "Breathing":
+                    Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.\n");
+                    break;
+
+                case "Reflecting":
+                    Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience." + 
+                    "This will help you recognize the power you have and how you can use it in other aspects of your life.\n");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void ActivityStart()
         {
             Console.Write("Avtivity Starting ");
 
@@ -45,6 +66,8 @@ namespace Develop04
             float duration = Int32.Parse(durationString);
 
             _duration = duration;
+
+            Console.Clear();
 
         }
 
