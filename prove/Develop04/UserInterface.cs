@@ -7,7 +7,7 @@ namespace Develop04
             Console.WriteLine("Menu Options: ");
             Console.WriteLine("     1. Breathing Activity");
             Console.WriteLine("     2. Reflection Activity");
-            Console.WriteLine("     3.");
+            Console.WriteLine("     3. Listing Activity");
             Console.WriteLine("     4. Quit");
 
         }
@@ -64,8 +64,8 @@ namespace Develop04
                         breathingActivity.StartMessage(activity);
                         breathingActivity.SetDuration();
                         duration = breathingActivity.GetDuration();
-                        breathingActivity.SetEndMessage(duration,activity);
                         breathingActivity.Breathing(duration);
+                        breathingActivity.SetEndMessage(duration,activity);
                         Console.WriteLine(breathingActivity.GetEndMessage());
                         this.Wait();
                         Console.Clear();
@@ -77,13 +77,27 @@ namespace Develop04
                         reflectingActivity.StartMessage(activity);
                         reflectingActivity.SetDuration();
                         duration = reflectingActivity.GetDuration();
-                        reflectingActivity.SetEndMessage(duration,activity);
                         reflectingActivity.DisplayPrompt();
                         reflectingActivity.DisplayQuestions(duration);
+                        reflectingActivity.SetEndMessage(duration,activity);
                         Console.WriteLine(reflectingActivity.GetEndMessage());
                         this.Wait();
                         Console.Clear();
-                        
+                        break;
+
+                    case 3:
+                        activity = "Listing";
+                        ListingActivity listingActivity = new ListingActivity();
+                        listingActivity.StartMessage(activity);
+                        listingActivity.SetDuration();
+                        duration = listingActivity.GetDuration();
+                        listingActivity.List(duration);
+                        this.Wait();
+                        Console.Clear();
+                        listingActivity.SetEndMessage(duration,activity);
+                        Console.WriteLine(listingActivity.GetEndMessage());
+                        this.Wait();
+                        Console.Clear();
                         break;
 
                     case 4:
