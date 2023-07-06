@@ -1,0 +1,8 @@
+Checklist:Drink water:Drink water every day this week:False:1:7
+Eternal:Read the Scriptures:Read the Scriptures every day:False:0:0
+Simple:Donate Plasma:Go and Donate Plasma after work:False:0:0
+Checklist:Make my bed:Make my bed every day this week:False:1:7
+Checklist:Drink water:Drink water every day this week:False:2:7
+Eternal:Read the Scriptures:Read the Scriptures every day:False:1:51
+Simple:Donate Plasma:Go and Donate Plasma after work:False:0:0
+Checklist:Make my bed:Make my bed every day this week:False:2:7

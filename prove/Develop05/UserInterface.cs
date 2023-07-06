@@ -88,7 +88,7 @@ namespace Develop05
                         string input = Console.ReadLine();
                         int intinput = Convert.ToInt32(input);
                         _points += _quests[intinput - 1].Record();
-                        Console.WriteLine("Congratulations!");
+                        Console.WriteLine("\nCongratulations! You have completed a quest");
 
                         Console.Write("Hit enter to continue: ");
                         Console.ReadLine();
@@ -96,13 +96,77 @@ namespace Develop05
                         break;
                     
                     case 4:
-                        File file = new File();
-                        foreach(Quest quest in _quests)
+                        Console.Clear();
+                        using (StreamWriter outputFile = File.AppendText("myFile.txt"))    
                         {
-                            file.save(quest.GetQuestType(),quest.GetQuest(),quest.GetDescription(),quest.GetCompletion(),quest.GetCompletions(),quest.GetTotal());
-                        }
+                            foreach(Quest quest in _quests)
+                            {
+                                outputFile.WriteLine($"{quest.GetQuestType()}:{quest.GetQuest()}:{quest.GetDescription()}:{quest.GetCompletion()}:{quest.GetCompletions()}:{quest.GetTotal()}");  
+                            } 
+                        }   
+                        
+                        Console.WriteLine("Your Quests have been saved! please hit enter to continue: ");
+                        Console.ReadLine();
+                        Console.Clear();
                     break;
-            
+
+
+                    case 5:
+                    Console.Clear();
+                    string filename = "myFile.txt";
+                    string[] lines = System.IO.File.ReadAllLines(filename);
+
+                    foreach (string line in lines)
+                    {
+                        string[] parts = line.Split(":");
+                        string type = parts[0];
+
+                        switch(type)
+                        {
+                            case "Eternal":
+                            Eternal eternal = new Eternal();
+                            eternal.SetQuestsAndType(parts[1],parts[2],parts[0]);
+                            if(parts[3] == "true")
+                            {
+                                eternal.SetCompletion();
+                            }
+                            eternal.SetCompletions(Convert.ToInt32(parts[4]));
+                            eternal.SetTotal(Convert.ToInt32(parts[5]));
+                            _quests.Add(eternal);
+                            break;
+
+                            case "Simple":
+                            Simple simple = new Simple();
+                            simple.SetQuestsAndType(parts[1],parts[2],parts[0]);
+                            if(parts[3] == "true")
+                            {
+                                simple.SetCompletion();
+                                _points += simple.Record();
+                            }
+                            simple.SetCompletions(Convert.ToInt32(parts[4]));
+                            simple.SetTotal(Convert.ToInt32(parts[5]));
+                            _quests.Add(simple);
+                         
+                            break;
+
+                            case "Checklist":
+                            Checklist checklist = new Checklist();
+                            checklist.SetQuestsAndType(parts[1],parts[2],parts[0]);
+                            
+                            if(parts[3] == "true")
+                            {checklist.SetCompletion();}
+                            checklist.SetCompletions(Convert.ToInt32(parts[4]));
+                            if(checklist.GetCompletions() > 0)
+                            {_points += checklist.Record();}
+                            checklist.SetTotal(Convert.ToInt32(parts[5]));
+                            _quests.Add(checklist);
+                            break;
+                        }
+                    }
+                    Console.WriteLine("Your Quests have been loaded! please hit enter to continue: ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
                     case 6:
                         quit = "yes";
                         break;

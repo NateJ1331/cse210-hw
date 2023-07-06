@@ -5,8 +5,12 @@ namespace Develop05
         public override int Record()
         {
             int points = 50;
+            int total = 50;
 
-            return points;
+            this.SetTotal(total + 1);
+            this.SetCompletions(1);
+
+            return points* this.GetCompletions();
         }
         
     }
